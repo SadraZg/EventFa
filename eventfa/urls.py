@@ -19,9 +19,5 @@ from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # Add events urls to main django project
     path('events/', include('event.urls')),
 ]
-
-#saf
