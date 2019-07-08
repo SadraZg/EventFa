@@ -1,0 +1,102 @@
+{% extends "events/layout.html" %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        {{ block.super }}
+        <title>{{ event.title }}</title>
+        <link rel="stylesheet" href={% static 'event/event_style.css' %}>
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+    {% block navbar %}
+        {{ block.super }}
+    {% endblock %}
+    {% block container %}
+        <div style="user-select: none;" class="container">
+            <div class="event-box" itemscope itemtype="http://schema.org/Event">
+                <div class="event-titles">
+                    <div class="event-titles-content">
+                        <h3 itemprop="name">{{ event.title }}</h3>
+                        <img itemprop="image" src="{{ event.image.url }}" alt="تصویر رویداد">
+                        <div class="event-handler" id="event-inf-start">
+                            <h4>برگزارکننده: </h4>
+                            <p itemprop="organizer">{{ event.creator }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-content">
+                    <div class="event-content-content">
+                        <h3>معرفی رویداد</h3>
+                        <p itemprop="description">{{ event.description }}</p>
+                    </div>
+                </div>
+                <div class="event-join">
+                    <h4>ظرفیت باقیمانده: </h4>
+                    <p>{{ event.remaining }} نفر از {{ event.capacity }} نفر</p>
+                    {% if user.is_authenticated %}
+                        {% if user_status.pending  %}
+                            <a class="rainbow-button" alt="منتظر تائید"
+                               style="margin-top: 0"></a>
+                        {% elif user_status.status %}
+                            <a class="rainbow-button" alt="قبلا اضافه شده اید"
+                               style="margin-top: 0"></a>
+                        {% else %}
+                            <a href="/events/join-event?event={{ event.id }}" class="rainbow-button" alt="حضور در رویداد"
+                               style="margin-top: 0"></a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="event-time">
+                    <h3>زمان برگزاری</h3>
+                    <div class="event-start-time">
+                        <i class="fas fa-hourglass-start"></i>
+                        <h4>شروع رویداد:</h4>
+                        <p itemprop="startDate">{{ event.start_time }}</p>
+                    </div>
+                    <div class="event-finish-time">
+                        <i class="fas fa-hourglass-end"></i>
+                        <h4>پایان رویداد:</h4>
+                        <p itemprop="endDate">{{ event.finish_time }}</p>
+                    </div>
+                </div>
+                <div class="event-information event-information-full">
+                    <i class="fa fa-city"></i>
+                    <h4>محل برگزاری</h4>
+                    <p itemprop="location">{{ event.address }}</p>
+                </div>
+                <div class="event-information event-information-half">
+                    <i class="fa fa-phone"></i>
+                    <h4>شماره تماس</h4>
+                    <p>{{ event.phone }}</p>
+                </div>
+                <div class="event-information event-information-half">
+                    <i class="fa fa-envelope"></i>
+                    <h4>آدرس ایمیل</h4>
+                    <p>{{ event.mail }}</p>
+                </div>
+                <div class="event-information event-information-half">
+                    <i class="fab fa-instagram"
+                       style="color: #FFFFFF; background-color: #323333; padding: 0 1px; border-radius: 5px;"></i>
+                    <h4>صفحه اینستاگرام</h4>
+                    <a href="http://instagram.com/{{ event.instagram }}" target="_blank"><p>@{{ event.instagram }}</p>
+                    </a>
+                </div>
+                <div class="event-information event-information-half" id="event-staff-start">
+                    <i class="fab fa-telegram"></i>
+                    <h4>کانال/آیدی تلگرام</h4>
+                    <a href="http://t.me/{{ event.telegram }}" target="_blank"><p>@{{ event.telegram }}</p></a>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% block footer %}
+        {{ block.super }}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>
