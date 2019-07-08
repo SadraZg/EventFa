@@ -23,3 +23,5 @@ urlpatterns = [
     # Add events urls to main django project
     path('events/', include('event.urls')),
 ]
+
+#saf
