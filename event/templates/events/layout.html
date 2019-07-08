@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" media="screen" href={% static 'event/style.css' %}>
+        <meta charset="UTF-8">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+            {% block navbar %}
+                <div style="user-select: none;" class="nav">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="/account/dashboard">پیشخوان</a></li>
+                        {% else %}
+                            <li><a href="/registration/login">پنل کاربری</a></li>
+                        {% endif %}
+                        <li><a href="/events">محفل ها</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="/logout">خروج</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endblock %}
+            {% block container %}
+            {% endblock %}
+            {% block footer %}
+                <div style="user-select: none;" class="footer">
+                    <p>این وبسایت صرفاً نمونه ای است برای پروژه ی درسی!</p>
+                    <p style="text-align: left;">InternetEnginnering 97-98</p>
+                </div>
+            {% endblock %}
+
+    {% endblock %}
+</body>
+</html>

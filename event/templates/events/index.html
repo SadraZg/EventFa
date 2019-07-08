@@ -1,0 +1,49 @@
+{% extends "events/layout.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        {{ block.super }}
+        <title>رویدادها</title>
+        <link rel="stylesheet" href={% static 'event/event_list.css' %}>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+            {% block navbar %}
+                {{ block.super }}
+            {% endblock %}
+            {% block container %}
+                <div class="event-list">
+                    <div class="event-list-content">
+                        {% if latest_event_list %}
+                                {% for event in latest_event_list %}
+                                    <div class="event-list-item">
+                                        <div class="event-list-item-image">
+                                            <img src="{{ event.image.url }}">
+                                        </div>
+                                        <div class="event-list-item-inf">
+                                            <h3>{{ event.title }}</h3>
+                                            <h4>ظرفیت: {{ event.remaining }} نفر</h4>
+                                            <p>{{ event.description }}</p>
+                                            <div class="event-list-item-button">
+                                                <a href="/events/{{ event.id }}" class="rainbow-button" alt="اطلاعات بیشتر"></a>
+                                            </div>
+                                         </div>
+                                    </div>
+                                {% endfor %}
+                        {% else %}
+                            <p>هیچ رویدادی وجود ندارد.</p>
+                        {% endif %}
+
+                    </div>
+                </div>
+            {% endblock %}
+            {% block footer %}
+                {{ block.super }}
+            {% endblock %}
+    {% endblock %}
+</body>
+</html>
