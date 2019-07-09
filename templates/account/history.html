@@ -1,0 +1,43 @@
+{% extends "events/layout.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href={% static 'event/styles/style.css' %}/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <title>تاریخچه رویداد ها</title>
+</head>
+<body>
+{% block navbar %}
+        {{ block.super }}
+    {% endblock %}
+    {% block container %}
+
+        <div class="container">
+        <div class="history-container">
+        {% for item in requests %}
+            <div class="history-item">
+                <p><a href="/events/{{ item.event.id }}">{{ item.event.title }}</a></p>
+                <p>{{ item.event.pub_date}}</p>
+                {% if user.is_superuser %}
+                <div class="history-item-status">
+                    <div class="history-item-status-btn">
+                        <a href="" style="color: darkgreen">پذیرفتن</a>
+                    </div>
+                    <div class="history-item-status-btn">
+                        <a href="" style="color: #9d1b39">رد کردن</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        </div>
+        </div>
+    {% endblock %}
+    {% block footer %}
+            {{ block.super }}
+    {% endblock %}
+</body>
+</html>

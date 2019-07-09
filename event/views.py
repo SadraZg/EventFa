@@ -128,3 +128,10 @@ def dashboard(request):
     return render(request, 'account/panel.html')
 
 
+@login_required
+def history(request):
+    requests = []
+    requests = JoinEvent.objects.all()
+    return render(request, 'account/history.html', {'requests': requests})
+
+
