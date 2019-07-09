@@ -119,4 +119,7 @@ def create_event_object(request):
     return redirect('account/dashboard/events')
 
 
+def home(request):
+    return render(request, 'index.html')
+
 

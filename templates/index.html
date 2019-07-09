@@ -1,0 +1,75 @@
+{% extends "events/layout.html" %}
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ block.super }}
+    <meta charset="UTF-8">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <title>ایونتفا</title>
+</head>
+<body>
+    {% block navbar %}
+        {{ block.super }}
+    {% endblock %}
+    {% block container %}
+        <div class="container">
+        </div>
+        <div class="head">
+            <div class="head-content">
+                <h1 style="user-select: none;" data-aos="flip-right" data-aos-duration="1500">ایونتفا</h1>
+                <h2 style="user-select: none;" data-aos="zoom-in" data-aos-delay="1000" data-aos-duration="2000">جایی برای یافتن رویداد های فرهنگی و کافه
+                    نشینی های شهر شما</h2>
+            </div>
+        </div>
+        <div style="user-select: none;" id="services">
+            <div class="services-image">
+                <img alt="Mobile size image" src="{% static 'event/img/mobile-size.png' %}" data-aos="flip-right" data-aos-duration="2500" data-aos-easing="ease-out-cubic">
+            </div>
+            <div class="services-content">
+                <div class="services-feature" data-aos="zoom-in-left" data-aos-duration="1500">
+                    <i class="fas fa-ticket-alt"></i>
+                    <p>رزرو و پیوستن به یک رویداد فرهنگی</p>
+                </div>
+                <div class="services-feature" data-aos="zoom-in-left" data-aos-duration="1500">
+                    <i class="fas fa-plus-square"></i>
+                    <p>ثبت و تشکیل یک رویداد جدید</p>
+                </div>
+                <div class="services-feature" data-aos="zoom-in-left" data-aos-duration="1500">
+                    <i class="fas fa-info-circle"></i>
+                    <p>مشخصات کامل رویداد ها همراه با راه های پشتیبانی</p>
+                </div>
+                <div class="services-feature" data-aos="zoom-in-left" data-aos-duration="1500">
+                    <i class="fas fa-theater-masks"></i>
+                    <p>رویداد های داستان خوانی، نمایشنامه خوانی، موسیقی، نقد فیلم و...</p>
+                </div>
+            </div>
+        </div>
+        <div style="user-select: none;" id="statistic">
+            <div class="statistic-item" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
+                <h3>رویداد های فعال</h3>
+                <h1>100</h1>
+            </div>
+            <div class="statistic-item" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
+                <h3>رویداد های برگزار شده</h3>
+                <h1>1000</h1>
+            </div>
+            <div class="statistic-item" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
+                <h3>صندلی های رزرو شده</h3>
+                <h1>850</h1>
+            </div>
+        </div>
+    {% endblock %}
+    {% block footer %}
+            {{ block.super }}
+    {% endblock %}
+
+<script src="{% static 'event/aos.js' %}"></script>
+<script>
+    AOS.init();
+</script>
+</body>
+</html>

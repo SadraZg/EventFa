@@ -10,5 +10,6 @@ urlpatterns = [
     path('registration/', include('django.contrib.auth.urls')),
     path('login-user', views.validate_user, name='login'),
     path('logout', views.logout_user, name='logout'),
-    path('register-user', views.register, name='sign-up')
+    path('register-user', views.register, name='sign-up'),
+    path('', views.home, name='home')
 ]
