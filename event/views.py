@@ -138,3 +138,15 @@ def history(request):
 @login_required
 def support(request):
     return render(request, 'account/support.html')
+
+
+@login_required
+def join_event(request):
+    try:
+        e = JoinEvent.objects.get_or_create(user=request.user,
+                                            event=Event.objects.filter(id=request.GET.get('event'))[0])
+    except:
+        pass
+
+    return redirect('/account/history', {'event': e})
+

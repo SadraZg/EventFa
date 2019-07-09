@@ -14,14 +14,10 @@
     {% block container %}
             <div class="container">
                 <div style="user-select: none;" class="support-box">
-                    {% csrf_token %}
                     <div class="support-box-content">
                         <h3>تماس با ما</h3>
                     </div>
                 </div>
-            </div>
-            <div class="login-result">
-                <p>{{ result }}</p>
             </div>
     {% endblock %}
     {% block footer %}
