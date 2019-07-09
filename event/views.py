@@ -135,3 +135,6 @@ def history(request):
     return render(request, 'account/history.html', {'requests': requests})
 
 
+@login_required
+def support(request):
+    return render(request, 'account/support.html')

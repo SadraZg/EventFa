@@ -1,0 +1,31 @@
+{% extends "events/layout.html" %}
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>پشتیبانی</title>
+</head>
+<body>
+      {% block navbar %}
+        {{ block.super }}
+    {% endblock %}
+    {% block container %}
+            <div class="container">
+                <div style="user-select: none;" class="support-box">
+                    {% csrf_token %}
+                    <div class="support-box-content">
+                        <h3>تماس با ما</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="login-result">
+                <p>{{ result }}</p>
+            </div>
+    {% endblock %}
+    {% block footer %}
+            {{ block.super }}
+    {% endblock %}
+</body>
+</html>
