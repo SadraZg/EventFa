@@ -1,0 +1,72 @@
+{% extends "events/layout.html" %}
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ block.super }}
+    <meta charset="UTF-8">
+    <title>ایونتفا | ورود</title>
+</head>
+<body>
+    {% block navbar %}
+        {{ block.super }}
+    {% endblock %}
+    {% block container %}
+            <div class="container">
+            </div>
+        <div style="user-select: none;" class="panel-box">
+            <div class="login-box">
+                <form method="post" action="/login-user">
+                    {% csrf_token %}
+                    <div class="login-box-content">
+                        <h3>ورود به حساب کاربری</h3>
+                        <input name="username" type="text" id="sign-in-username" class="Input-text" style="order: 2"
+                               placeholder="نام کاربری خود را وارد نمایید" required>
+                        <label for="sign-in-username" class="Input-label" style="order: 1">نام کاربری</label>
+                        <input name="password" type="password" id="sign-in-password" class="Input-text" style="order: 4"
+                               placeholder="رمز عبور خود را وارد نمایید" required>
+                        <label for="sign-in-password" class="Input-label" style="order: 3">رمز عبور</label>
+                        {#                <a href="#" class="rainbow-button" alt="ورود" style="order: 20"></a>#}
+                        <button type="submit" style="order: 4" class="login-button">ورود</button>
+                    </div>
+                </form>
+            </div>
+            <div style="user-select: none;" class="register-box">
+                <form method="post" action="/register-user">
+                    {% csrf_token %}
+                    <div class="register-box-content">
+                        <h3>ثبت نام</h3>
+                        <input name="first_name" type="text" id="sign-up-first-name" class="Input-text" style="order: 2"
+                               placeholder="نام خود را وارد نمایید" required>
+                        <label for="sign-up-first-name" class="Input-label" style="order: 1">نام</label>
+                        <input name="last_name" type="text" id="sign-up-last-name" class="Input-text" style="order: 4"
+                               placeholder="نام خانوادگی خود را وارد نمایید" required>
+                        <label for="sign-up-last-name" class="Input-label" style="order: 3">نام خانوادگی</label>
+                        <input name="username" type="text" id="sign-up-user-name" class="Input-text" style="order: 6"
+                               placeholder="یک نام کاربری دلخواه وارد نمایید" required>
+                        <label for="sign-up-user-name" class="Input-label" style="order: 5">نام کاربری</label>
+                        <input name="cellphone" type="text" id="sign-up-phone-number" class="Input-text" style="order: 8"
+                               placeholder="شماره موبایل خود را وارد کنید" required>
+                        <label for="sign-up-phone-number" class="Input-label" style="order: 7">شماره موبایل</label>
+                        <input name="mail" type="email" id="sign-up-email" class="Input-text" style="order: 10"
+                               placeholder="آدرس ایمیل خود را وارد کنید" >
+                        <label for="sign-up-email" class="Input-label" style="order: 9">آدرس ایمیل</label>
+                        <input name="password" type="password" id="sign-up-password" class="Input-text" style="order: 12"
+                               placeholder="یک رمز عبور دلخواه وارد نمایید" required>
+                        <label for="sign-up-password" class="Input-label" style="order: 11">رمز عبور</label>
+        {#                <a href="#" class="rainbow-button" alt="عضویت" style="order: 20"></a>#}
+                        <button type="submit" style="order: 12" class="login-button">عضویت</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="login-result">
+            <p>{{ result }}</p>
+        </div>
+    {% endblock %}
+    {% block footer %}
+            {{ block.super }}
+    {% endblock %}
+</body>
+</html>
