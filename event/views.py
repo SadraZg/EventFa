@@ -123,3 +123,8 @@ def home(request):
     return render(request, 'index.html')
 
 
+@login_required
+def dashboard(request):
+    return render(request, 'account/panel.html')
+
+

@@ -1,0 +1,47 @@
+{% extends "events/layout.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href={% static 'event/styles/style.css' %}/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <title>ایونتفا | پنل کاربری</title>
+</head>
+<body>
+{% block navbar %}
+        {{ block.super }}
+    {% endblock %}
+    {% block container %}
+        <div style="user-select: none;" class="container">
+            <div class="panel">
+                <div class="panel-content">
+                    <h3>پنل کاربری شما</h3>
+                    {% if user.is_superuser %}
+                        <div class="panel-item">
+                            <i class="fas fa-plus-square"></i>
+                            <a href="/events/create-event">ایجاد رویداد</a>
+                        </div>
+                    {% endif %}
+                    <div class="panel-item">
+                        <i class="fas fa-history"></i>
+                        <a href="/account/history">تاریخچه رویداد ها</a>
+                    </div>
+                    <div class="panel-item">
+                        <i class="fas fa-user-edit"></i>
+                        <a>تغییر مشخصات</a>
+                    </div>
+                    <div class="panel-item">
+                        <i class="fas fa-hands-helping"></i>
+                        <a href="/account/support">پشتیبانی</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% block footer %}
+            {{ block.super }}
+    {% endblock %}
+</body>
+</html>
