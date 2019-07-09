@@ -1,0 +1,77 @@
+{% extends "events/layout.html" %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ block.super }}
+    <meta charset="UTF-8">
+    <title>ایونتفا | ایجاد رویداد</title>
+</head>
+<body>
+{% block navbar %}
+    {{ block.super }}
+{% endblock %}
+{% block container %}
+    <div class="container">
+    </div>
+    <div class="new-event-box">
+        <div class="new-event-content">
+            <h3>ایجاد یک رویداد</h3>
+            <h4>«مشخصات رویداد»</h4>
+            <form method="post" action="/events/create-event-object" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="new-event-form">
+                    <div class="form-right">
+                        <input name="title" type="text" id="new-event-title" class="Input-text" style="order: 2"
+                               placeholder="عنوان رویداد خود را وارد کنید" required>
+                        <label for="new-event-title" class="Input-label" style="order: 1">عنوان رویداد</label>
+                        <input name="capacity" type="number" id="new-event-capacity" class="Input-text" style="order: 4"
+                               placeholder="ظرفیت رویداد خود را وارد کنید" required>
+                        <label for="new-event-capacity" class="Input-label" style="order: 3">ظرفیت رویداد</label>
+                        <input name="address" type="text" id="new-event-address" class="Input-text" style="order: 5"
+                               placeholder="محل برگزاری رویداد خود وارد کنید" required>
+                        <label for="new-event-address" class="Input-label" style="order: 4">محل برگزاری</label>
+                        <input name="phone" type="tel" id="new-event-phone" class="Input-text" style="order: 7"
+                               placeholder="شماره تماس پشتیبانی رویداد خود را وارد کنید" required>
+                        <label for="new-event-phone" class="Input-label" style="order: 6">شماره تماس پشتیبانی</label>
+                        <input name="mail" type="email" id="new-event-email" class="Input-text" style="order: 9"
+                               placeholder="آدرس ایمیل پشتیبانی رویداد خود را وارد کنید" required>
+                        <label for="new-event-email" class="Input-label" style="order: 8">آدرس ایمیل پشتیبانی</label>
+                        <input name="telegram" id="new-event-telegram" class="Input-text" style="order: 11"
+                               placeholder="در صورت تمایل کانال/آیدی تلگرام خود را وارد کنید">
+                        <label for="new-event-telegram" class="Input-label" style="order: 10">کانال/آیدی تلگرام</label>
+                        <input name="instagram" id="new-event-instagram" class="Input-text" style="order: 13"
+                               placeholder="در صورت تمایل آیدی صفحه اینستاگرام خود را وارد کنید">
+                        <label for="new-event-instagram" class="Input-label" style="order: 12">صفحه اینستاگرام</label>
+                    </div>
+                    <div class="form-left">
+
+                        <textarea name="description" id="new-event-desc" class="Text-Area" style="order: 3; margin-bottom: 15px;"
+                                  placeholder="شرحی برای رویداد خود بنویسید" required></textarea>
+                        <label for="new-event-desc" class="Input-label" style="order: 2">شرح رویداد</label>
+
+                        <input name="start_date" type="datetime-local" id="new-event-start-date" class="Input-text"
+                               style="order: 9"
+                               placeholder="روز شروع رویداد خود را وارد کنید">
+
+                        <input name="finish_date" type="datetime-local" id="new-event-start-date" class="Input-text"
+                               style="order: 9"
+                               placeholder="روز پایان رویداد خود را وارد کنید">
+
+                        <input name="pic" type="file" id="new-event-img" class="custom-file-input"
+                           style="order: 50;">
+                    </div>
+                    <button type="submit" class="login-button" style="order: 51">ایجاد</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    {{ block.super }}
+{% endblock %}
+</body>
+</html>

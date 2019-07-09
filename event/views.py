@@ -5,6 +5,8 @@ from django.contrib.auth.views import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
+import datetime
+
 
 pass_salt = '@131@13551eded'
 
@@ -87,5 +89,34 @@ def register(request):
 
             # send an activation mail to user
         return render(request, 'registration/login.html', {'result': result})
+
+
+@login_required
+def create_new_event(request):
+    return render(request, 'events/newevent.html')
+
+
+@login_required
+def create_event_object(request):
+    file = request.FILES['pic']
+    title = request.POST.get('title')
+    capacity = request.POST.get('capacity')
+    address = request.POST.get('address')
+    phone = request.POST.get('phone')
+    mail = request.POST.get('mail')
+    telegram = request.POST.get('telegram')
+    pub_date = str(datetime.datetime.now())
+    start_date = request.POST.get('start_date')
+    finish_date = request.POST.get('finish_date')
+    instagram = request.POST.get('instagram')
+    description = request.POST.get('description')
+
+    e = Event.objects.create(title=title, capacity=capacity, address=address, phone=phone,
+                             mail=mail, telegram=telegram, pub_date=pub_date, start_time=start_date,
+                             finish_time=finish_date, description=description,
+                             image=file, instagram=instagram, creator=request.user.username)
+
+    return redirect('account/dashboard/events')
+
 
 

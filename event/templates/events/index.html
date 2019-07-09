@@ -16,11 +16,11 @@
                 {{ block.super }}
             {% endblock %}
             {% block container %}
-                <div class="event-list">
-                    <div class="event-list-content">
+                <div class="event-list" >
+                    <div class="event-list-content" style="margin-bottom: 70px;">
                         {% if latest_event_list %}
                                 {% for event in latest_event_list %}
-                                    <div class="event-list-item">
+                                    <div class="event-list-item" style="margin-bottom: 20px;">
                                         <div class="event-list-item-image">
                                             <img src="{{ event.image.url }}">
                                         </div>
